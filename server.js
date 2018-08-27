@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
     console.log("sent");
-    //console.log("Where are we?: " + __dirname + process.env.PORT);
+    console.log("Where are we?: " + __dirname + process.env.PORT);
     res.sendFile(__dirname + "/client/page.html");
 });
 
