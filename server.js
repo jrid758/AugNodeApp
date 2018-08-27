@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(req,res) {
     console.log("sent");
-    console.log("Where are we?: " + __dirname);
+    //console.log("Where are we?: " + __dirname + process.env.PORT);
     res.sendFile(__dirname + "/client/page.html");
 });
 
@@ -22,4 +22,4 @@ app.get('/:id', function(req,res) {
 });
 
 
-app.listen(port, () => console.log('Example app listening on port 3002!' + process.env.PORT));
+app.listen(port, () => console.log('Example app listening on port 3002!'));
