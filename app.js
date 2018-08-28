@@ -26,22 +26,26 @@ db.once('open', function() {
 const Schema = mongoose.Schema;
 
 const Heros = new Schema( {
-    name: String
+    name: String,
+    power: String
 }
 );
 
 let Hero = mongoose.model('Hero', Heros);
 
 
-function putHeroes(name) {
-    let bob = new Hero({name: name});
-    bob.save(function (err, fluffy) {
-        if (err) {
-            return console.error(err);
-        } else {
-        console.log("good");
-        }
-    });
+function putHeroes(hit) {
+    let bob = new Hero({name: hit, power: hit + " BANG"});
+    // bob.save(function (err, fluffy) {
+    //     if (err) {
+    //         return console.error(err);
+    //     } else {
+    //     console.log("good");
+    //     }
+    // });
+
+    bob.save();
+
     // const docquery = Hero.find({});
     // docquery
     //   .exec()
@@ -74,7 +78,7 @@ app.get('/', function(req,res) {
     console.log("sent");
     console.log("Where are we?: " + __dirname + " SPACE " + process.env.PORT);
     console.log("LOGIN INFO");
-console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
+//console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
     res.sendFile(__dirname + "/client/page.html");
 });
 
