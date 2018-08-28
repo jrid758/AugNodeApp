@@ -7,6 +7,8 @@ let _ = require('lodash');
 
 // COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
 // COSMOSDB_DBNAME={Your DB Name Here}
+console.log("LOGIN INFO");
+console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
 
 var mongoose = require('mongoose');
 const mongoUri = `mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`;
