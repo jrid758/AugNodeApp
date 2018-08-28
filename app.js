@@ -14,7 +14,7 @@ console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${proces
 
 const mongoUri = `mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`;
 mongoose.set('debug', true);
-mongoose.connect(mongoUri, { useMongoClient: true });
+mongoose.connect(mongoUri, { useNewUrlParser: true });
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
