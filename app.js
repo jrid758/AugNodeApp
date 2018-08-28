@@ -80,10 +80,11 @@ app.get('/', function(req,res) {
     console.log("LOGIN INFO");
 //console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
     res.sendFile(__dirname + "/client/page.html");
+    next();
 
 });
 
-app.post('/:id', function(req,res) {
+app.get('/:id', function(req,res) {
     console.log("sent being ran");
     putHeroes(req.params.id);
     res.json( {ID: req.params.id});
