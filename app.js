@@ -26,14 +26,6 @@ db.once('open', function() {
 const Schema = mongoose.Schema;
 
 const Heros = new Schema( {
-//   {
-//     id: { type: Number, required: true, unique: true },
-//     name: String,
-//     saying: String
-//   },
-//   {
-//     collection: 'Heroes'
-//   }
     name: String
 }
 );
@@ -44,8 +36,11 @@ let Hero = mongoose.model('Hero', Heros);
 function putHeroes(name) {
     let bob = new Hero({name: name});
     bob.save(function (err, fluffy) {
-        if (err) return console.error(err);
+        if (err) {
+            return console.error(err);
+        } else {
         console.log("good");
+        }
     });
     // const docquery = Hero.find({});
     // docquery
