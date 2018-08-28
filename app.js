@@ -12,6 +12,49 @@ var mongoose = require('mongoose');
 const mongoUri = `mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`;
 mongoose.set('debug', true);
 mongoose.connect(mongoUri, { useMongoClient: true });
+
+
+const Schema = mongoose.Schema;
+
+const Heros = new Schema( {
+//   {
+//     id: { type: Number, required: true, unique: true },
+//     name: String,
+//     saying: String
+//   },
+//   {
+//     collection: 'Heroes'
+//   }
+    name: String
+}
+);
+
+let Hero = mongoose.model('Hero', Heros);
+
+
+function putHeroes(name) {
+    let bob = new Hero({name: name});
+    bob.save(function (err, fluffy) {
+        if (err) return console.error(err);
+        console.log("good");
+    });
+    // const docquery = Hero.find({});
+    // docquery
+    //   .exec()
+    //   .then(heroes => {
+    //     res.status(200).json(heroes);
+    //   })
+    //   .catch(error => {
+    //     res.status(500).send(error);
+    //     return;
+    //   });
+  }
+  
+
+
+
+
+
 //mongoose.connect(process.env.COSMOSDB_CONNSTR+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb");
 
 
@@ -31,6 +74,7 @@ app.get('/', function(req,res) {
 
 app.get('/:id', function(req,res) {
     console.log("sent");
+    putHeroes(req.params.id);
     res.json( {ID: req.params.id});
 });
 
