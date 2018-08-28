@@ -4,16 +4,23 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let app = express();
 let _ = require('lodash');
+var mongoose = require('mongoose');
 
 // COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
 // COSMOSDB_DBNAME={Your DB Name Here}
 console.log("LOGIN INFO");
 console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
 
-var mongoose = require('mongoose');
+
 const mongoUri = `mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`;
 mongoose.set('debug', true);
 mongoose.connect(mongoUri, { useMongoClient: true });
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("connected to db");
+});
 
 
 const Schema = mongoose.Schema;
