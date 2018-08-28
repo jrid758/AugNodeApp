@@ -71,6 +71,8 @@ app.use(bodyParser.json());
 app.get('/', function(req,res) {
     console.log("sent");
     console.log("Where are we?: " + __dirname + " SPACE " + process.env.PORT);
+    console.log("LOGIN INFO");
+console.log(`mongodb://${process.env.ACCOUNT_NAME}:${process.env.M_KEY}@${process.env.ACCOUNT_NAME}.documents.azure.com:${process.env.PORT_NUM}/${process.env.DATAB_NAME}?ssl=true`);
     res.sendFile(__dirname + "/client/page.html");
 });
 
