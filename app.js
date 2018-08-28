@@ -83,7 +83,7 @@ app.get('/', function(req,res) {
 
 });
 
-app.get('/:id', function(req,res) {
+app.post('/:id', function(req,res) {
     console.log("sent being ran");
     putHeroes(req.params.id);
     res.json( {ID: req.params.id});
