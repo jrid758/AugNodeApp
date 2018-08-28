@@ -74,7 +74,7 @@ app.use(bodyParser.json());
 // firstdbnode
 // 2H8VzRSkTOLeAtEAAmCnnelWCM7qPBetNLZYVd35NuO82zxw1GikrHEGu1E7g3wdvMWeM2PWwlwxEnHNifdWHA==
 
-app.get('/', function(req,res) {
+app.get('/', function(req,res,next) {
     console.log("sent");
     console.log("Where are we?: " + __dirname + " SPACE " + process.env.PORT);
     console.log("LOGIN INFO");
